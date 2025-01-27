@@ -34,7 +34,9 @@ class Import::ConfigurationsController < ApplicationController
         :notes_col_label,
         :currency_col_label,
         :date_format,
-        :signage_convention
+        :signage_convention,
+        :currency,
+        :format
       )
     end
 end

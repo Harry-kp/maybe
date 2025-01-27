@@ -17,5 +17,8 @@
   <%= form.select :tags_col_label, import.csv_headers, { include_blank: "Leave empty", label: "Tags (optional)" } %>
   <%= form.select :notes_col_label, import.csv_headers, { include_blank: "Leave empty", label: "Notes (optional)" } %>
 
+  <%= form.select :currency, options_for_select(ImportsHelper.currency_options), { include_blank: "Select currency", label: "Currency" }, required: true %>
+  <%= form.select :format, options_for_select(ImportsHelper.format_options), { include_blank: "Select format", label: "Format" }, required: true %>
+
   <%= form.submit "Apply configuration", class: "w-full btn btn--primary", disabled: import.complete? %>
 <% end %>

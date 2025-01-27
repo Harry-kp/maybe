@@ -28,7 +28,7 @@ module ImportsHelper
   def dry_run_resource(key)
     map = {
       transactions: DryRunResource.new(label: "Transactions", icon: "credit-card", text_class: "text-cyan-500", bg_class: "bg-cyan-500/5"),
-      accounts: DryRunResource.new(label: "Accounts", icon: "layers", text_class: "text-orange-500", bg_class: "bg-orange-500/5"),
+      accounts: DryRunResource.new(label: "Accounts", icon: "layers", text_class: "text-orange-500", text_class: "text-orange-500", bg_class: "bg-orange-500/5"),
       categories: DryRunResource.new(label: "Categories", icon: "shapes", text_class: "text-blue-500", bg_class: "bg-blue-500/5"),
       tags: DryRunResource.new(label: "Tags", icon: "tags", text_class: "text-violet-500", bg_class: "bg-violet-500/5")
     }
@@ -52,6 +52,15 @@ module ImportsHelper
     border = row.errors.key?(field) ? "border-red-500" : "border-transparent"
 
     [ base, border ].join(" ")
+  end
+
+  def currency_options
+    currencies = YAML.load_file(Rails.root.join('config', 'currencies.yml'))
+    currencies.map { |key, value| [value['name'], key] }
+  end
+
+  def format_options
+    NUMBER_FORMATS.keys
   end
 
   private

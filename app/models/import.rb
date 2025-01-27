@@ -145,6 +145,6 @@ class Import < ApplicationRecord
 
     def sanitize_number(value)
       return "" if value.nil?
-      value.gsub(/[^\d.\-]/, "")
+      value.gsub(/[^\d#{format[:separator]}#{format[:delimiter]}]/, "")
     end
 end
